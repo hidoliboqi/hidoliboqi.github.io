@@ -23,6 +23,25 @@
   
   
   <entry>
+    <title>修改博客主题并添加导航栏图标的各页面</title>
+    <link href="/2023/09/21/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9B%BE%E6%A0%87%E7%9A%84%E5%90%84%E9%A1%B5%E9%9D%A2/"/>
+    <url>/2023/09/21/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9B%BE%E6%A0%87%E7%9A%84%E5%90%84%E9%A1%B5%E9%9D%A2/</url>
+    
+    <content type="html"><![CDATA[<h1id="修改博客主题并添加导航栏图标的各页面">修改博客主题并添加导航栏图标的各页面</h1><h2 id="修改博客主题">修改博客主题</h2><p>下载自己想要的博客主题并解压到博客目录下的theme目录中，这里选择的时hexo-fluid主题。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> blog/theme<span class="hljs-comment">#进入博客目录下的主题目录</span><br>$ https://github.com/fluid-dev/hexo-theme-fluid.git<span class="hljs-comment">#在主题目录中克隆GitHub上的fluid主题文件</span><br></code></pre></td></tr></table></figure><p>修改主题文件夹为fluid。</p><p>打开博客目录下的_config.yml文件，修改主题。</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><span class="hljs-comment">#需与主题目录下的文件夹名相同</span><br></code></pre></td></tr></table></figure><p>修改语言为中文。</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span><br></code></pre></td></tr></table></figure><p>保存退出。</p><p>复制_config.yml内的内容，新建一个_congfig.fluid.yml的文件，将内容复制进新建的_config.fluid.yml文件。</p><p>以后需要修改配置只需修改_config.fluid.yml文件，而不需要修改_config.yml文件。</p><h2 id="添加关于页">添加关于页</h2><p>用Git打开命令行窗口，输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new page about<br></code></pre></td></tr></table></figure><p>然后Hexo会在博客的source目录下的about的目录下新建index.md来作为生成的关于页。</p><p>打开about目录下的index.md文件，添加layout属性</p><p>修改后的文件示例如下：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 标题<br><span class="hljs-section">layout: about</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure><p>修改完成，清理缓存重新生成页面即可显示。</p><p>类似的</p><h2 id="添加分类页和标签页">添加分类页和标签页</h2><p>用Git打开命令行窗口，输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new page categories<span class="hljs-comment">#生成分类页</span><br>$ hexo new page tag<span class="hljs-comment">#生成标签页</span><br></code></pre></td></tr></table></figure><p>然后Hexo会在博客的source目录下的categories/tag的目录下新建index.md来作为生成的分类页/标签页。</p><p>打开categories/tag目录下的index.md文件，添加type属性</p><p>修改后的文件示例如下：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 标题<br><span class="hljs-section">type: categories&lt;!-- 分类页type后选择categories，标签页type后选择tag --&gt;</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure><p>修改完成，清理缓存重新生成页面即可显示。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用Hexo搭建个人博客</title>
     <link href="/2023/09/21/%E4%BD%BF%E7%94%A8hexo-GitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <url>/2023/09/21/%E4%BD%BF%E7%94%A8hexo-GitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
