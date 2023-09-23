@@ -16,21 +16,21 @@
   <meta name="author" content="hidoliboqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装Scala 直接在centos里输入命令 1wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.11.12&#x2F;scala-2.11.12.rpm 下载Scala的yum安装包 输入命令 1yum install scala-2.11.12.rpm 安装Scala完成 编写HelloWorld 创建HelloWorld.scala文件 1vi">
+    <meta name="description" content="Spark安装 环境准备  Linux（CentOS7） Hadoop（3.1.3） JDK（1.8）  1.下载Spark安装包 访问Spark官网下载Spark安装文件（笔者这里选择的是2.7版本），将其放到&#x2F;opt&#x2F;software目录下。 下载玩安装文件后，需要对文件进行解压，执行命令 1$ tar -zxvf spark-2.4.8-bin-hadoop2.7.tgz">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scala基础">
-<meta property="og:url" content="http://example.com/2023/09/22/scala%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="Spark安装">
+<meta property="og:url" content="http://example.com/2023/09/23/Spark%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="hidoliboqi的博客">
-<meta property="og:description" content="安装Scala 直接在centos里输入命令 1wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.11.12&#x2F;scala-2.11.12.rpm 下载Scala的yum安装包 输入命令 1yum install scala-2.11.12.rpm 安装Scala完成 编写HelloWorld 创建HelloWorld.scala文件 1vi">
+<meta property="og:description" content="Spark安装 环境准备  Linux（CentOS7） Hadoop（3.1.3） JDK（1.8）  1.下载Spark安装包 访问Spark官网下载Spark安装文件（笔者这里选择的是2.7版本），将其放到&#x2F;opt&#x2F;software目录下。 下载玩安装文件后，需要对文件进行解压，执行命令 1$ tar -zxvf spark-2.4.8-bin-hadoop2.7.tgz">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-22T07:13:04.000Z">
-<meta property="article:modified_time" content="2023-09-22T08:30:50.389Z">
+<meta property="article:published_time" content="2023-09-23T02:02:44.000Z">
+<meta property="article:modified_time" content="2023-09-23T02:42:42.089Z">
 <meta property="article:author" content="hidoliboqi">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>scala基础 - hidoliboqi的博客</title>
+  <title>Spark安装 - hidoliboqi的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="scala基础"></span>
+            <span id="subtitle" data-typed-text="Spark安装"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-22 15:13" pubdate>
-          2023年9月22日 下午
+        <time datetime="2023-09-23 10:02" pubdate>
+          2023年9月23日 上午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          430 字
+          903 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          4 分钟
+          8 分钟
         
       </span>
     
@@ -267,27 +267,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">scala基础</h1>
+            <h1 id="seo-header">Spark安装</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="安装scala">安装Scala</h2>
-<p>直接在centos里输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.rpm<br></code></pre></td></tr></table></figure>
-<p>下载Scala的yum安装包</p>
-<p>输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install scala-2.11.12.rpm<br></code></pre></td></tr></table></figure>
-<p>安装Scala完成</p>
-<h2 id="编写helloworld">编写HelloWorld</h2>
-<p>创建HelloWorld.scala文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim HelloWorld.scala<br></code></pre></td></tr></table></figure>
-<p>在文件中输入</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">HelloWorld</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args:<span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;<br>        <span class="hljs-keyword">val</span> names=<span class="hljs-type">Array</span>(<span class="hljs-string">&quot;test1&quot;</span>,<span class="hljs-string">&quot;test2&quot;</span>,<span class="hljs-string">&quot;test3&quot;</span>)<br>        println(names(<span class="hljs-number">2</span>))<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>输入编译命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scalac HelloWorld.scala<br></code></pre></td></tr></table></figure>
-<p>执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scala HelloWorld	<span class="hljs-comment">#scala &lt;类名&gt;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="spark安装">Spark安装</h1>
+<h2 id="环境准备">环境准备</h2>
+<ul>
+<li><p>Linux（CentOS7）</p></li>
+<li><p>Hadoop（3.1.3）</p></li>
+<li><p>JDK（1.8）</p></li>
+</ul>
+<h2 id="下载spark安装包">1.下载Spark安装包</h2>
+<p>访问Spark官网下载Spark安装文件（笔者这里选择的是2.7版本），将其放到<code>/opt/software</code>目录下。</p>
+<p>下载玩安装文件后，需要对文件进行解压，执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tar -zxvf spark-2.4.8-bin-hadoop2.7.tgz -C /opt/module<br></code></pre></td></tr></table></figure>
+<p>将其解压到<code>/opt/module/</code>目录下。</p>
+<p>修改spark目录名称。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /opt/module<br>$ <span class="hljs-built_in">mv</span> spark-2.4.8-bin-hadoop2.7/ ./spark-2.4.8<br></code></pre></td></tr></table></figure>
+<h2 id="配置相关文件">2.配置相关文件</h2>
+<p>安装文件解压缩后，还需修改Spark的配置文件spark-env.sh。首先复制一份Spark安装文件自带的配置文件模板以修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> spark-2.4.8/<br>$ <span class="hljs-built_in">cp</span> ./conf/spark-env.sh.template ./conf/spark-env.sh<br></code></pre></td></tr></table></figure>
+<p>然后使用vim编辑器打开spark-env.sh文件进行编辑，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ vim ./conf/spark-env.sh<br></code></pre></td></tr></table></figure>
+<p>在文件第一行添加配置信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> SPARK_DIST_CLASSPATH=$(/opt/module/hadoop-3.1.3/bin/hadoop classpath) <br><span class="hljs-comment">#括号里是/hadoop安装目录/bin/hadoop空格后直接输classpath</span><br></code></pre></td></tr></table></figure>
+<p>添加后保存，这样Spark就可以把数据存储到Hadoop分布式文件系统HDFS中，也可以从HDFS中读取数据。</p>
+<h2
+id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否安装成功</h2>
+<p>进入到Spark目录下，执行实例SparkPi</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /opt/module/spark-2.4.8/<br>$ bin/run-example SparkPi<br></code></pre></td></tr></table></figure>
+<p>执行命令会输出很多屏幕信息，不容易找到输出结果，通过<code>grep</code>命令过滤,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ bin/run-example SparkPi  2&gt;&amp;1 |grep <span class="hljs-string">&quot;Pi is roughly&quot;</span><br></code></pre></td></tr></table></figure>
+<p>过滤后得到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Pi is roughly 3.1533357666788335<br></code></pre></td></tr></table></figure>
+<p>可以得到<span class="math inline">\(\pi\)</span>的近似值。</p>
 
                 
               </div>
@@ -326,8 +341,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>scala基础</div>
-      <div>http://example.com/2023/09/22/scala基础/</div>
+      <div>Spark安装</div>
+      <div>http://example.com/2023/09/23/Spark安装/</div>
     </div>
     <div class="license-meta">
       
@@ -339,7 +354,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月22日</div>
+          <div>2023年9月23日</div>
         </div>
       
       
@@ -371,18 +386,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/22/%E6%B5%AE%E7%82%B9%E6%95%B0/" title="浮点数">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浮点数</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/21/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9B%BE%E6%A0%87%E7%9A%84%E5%90%84%E9%A1%B5%E9%9D%A2/" title="修改博客主题并添加导航栏图标的各页面">
-                        <span class="hidden-mobile">修改博客主题并添加导航栏图标的各页面</span>
+                      <a href="/2023/09/22/%E6%B5%AE%E7%82%B9%E6%95%B0/" title="浮点数">
+                        <span class="hidden-mobile">浮点数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -439,6 +448,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -632,6 +647,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

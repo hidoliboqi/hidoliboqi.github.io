@@ -16,21 +16,21 @@
   <meta name="author" content="hidoliboqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装Scala 直接在centos里输入命令 1wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.11.12&#x2F;scala-2.11.12.rpm 下载Scala的yum安装包 输入命令 1yum install scala-2.11.12.rpm 安装Scala完成 编写HelloWorld 创建HelloWorld.scala文件 1vi">
+    <meta name="description" content="浮点数表示与运算 浮点数表示 科学计数法 比如说 326,000,000 用科学计数法表示能表示为 $ 3.26*10^8 $ 减少0的无意义表示。 类似的，浮点数由 阶符 + 阶码 + 尾数 表示。 阶符表示阶码的符号，一般只占1位。 阶码用移码表示，在单精度浮点数(float)中占8位，在双精度浮点数(double)中占11位。 阶码在全0或全1有特殊含义，所以阶码能表示的数值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scala基础">
-<meta property="og:url" content="http://example.com/2023/09/22/scala%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="浮点数">
+<meta property="og:url" content="http://example.com/2023/09/22/%E6%B5%AE%E7%82%B9%E6%95%B0/index.html">
 <meta property="og:site_name" content="hidoliboqi的博客">
-<meta property="og:description" content="安装Scala 直接在centos里输入命令 1wget https:&#x2F;&#x2F;downloads.lightbend.com&#x2F;scala&#x2F;2.11.12&#x2F;scala-2.11.12.rpm 下载Scala的yum安装包 输入命令 1yum install scala-2.11.12.rpm 安装Scala完成 编写HelloWorld 创建HelloWorld.scala文件 1vi">
+<meta property="og:description" content="浮点数表示与运算 浮点数表示 科学计数法 比如说 326,000,000 用科学计数法表示能表示为 $ 3.26*10^8 $ 减少0的无意义表示。 类似的，浮点数由 阶符 + 阶码 + 尾数 表示。 阶符表示阶码的符号，一般只占1位。 阶码用移码表示，在单精度浮点数(float)中占8位，在双精度浮点数(double)中占11位。 阶码在全0或全1有特殊含义，所以阶码能表示的数值">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-22T07:13:04.000Z">
-<meta property="article:modified_time" content="2023-09-22T08:30:50.389Z">
+<meta property="article:published_time" content="2023-09-22T12:46:16.000Z">
+<meta property="article:modified_time" content="2023-09-22T13:01:33.143Z">
 <meta property="article:author" content="hidoliboqi">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>scala基础 - hidoliboqi的博客</title>
+  <title>浮点数 - hidoliboqi的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="scala基础"></span>
+            <span id="subtitle" data-typed-text="浮点数"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-22 15:13" pubdate>
-          2023年9月22日 下午
+        <time datetime="2023-09-22 20:46" pubdate>
+          2023年9月22日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          430 字
+          196 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          4 分钟
+          2 分钟
         
       </span>
     
@@ -267,27 +267,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">scala基础</h1>
+            <h1 id="seo-header">浮点数</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="安装scala">安装Scala</h2>
-<p>直接在centos里输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.rpm<br></code></pre></td></tr></table></figure>
-<p>下载Scala的yum安装包</p>
-<p>输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install scala-2.11.12.rpm<br></code></pre></td></tr></table></figure>
-<p>安装Scala完成</p>
-<h2 id="编写helloworld">编写HelloWorld</h2>
-<p>创建HelloWorld.scala文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim HelloWorld.scala<br></code></pre></td></tr></table></figure>
-<p>在文件中输入</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">HelloWorld</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args:<span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;<br>        <span class="hljs-keyword">val</span> names=<span class="hljs-type">Array</span>(<span class="hljs-string">&quot;test1&quot;</span>,<span class="hljs-string">&quot;test2&quot;</span>,<span class="hljs-string">&quot;test3&quot;</span>)<br>        println(names(<span class="hljs-number">2</span>))<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>输入编译命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scalac HelloWorld.scala<br></code></pre></td></tr></table></figure>
-<p>执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scala HelloWorld	<span class="hljs-comment">#scala &lt;类名&gt;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="浮点数表示与运算">浮点数表示与运算</h1>
+<h2 id="浮点数表示">浮点数表示</h2>
+<h3 id="科学计数法">科学计数法</h3>
+<p>比如说 326,000,000 用科学计数法表示能表示为 $ 3.26*10^8 $
+减少0的无意义表示。</p>
+<p>类似的，浮点数由 阶符 + 阶码 + 尾数 表示。</p>
+<p>阶符表示阶码的符号，一般只占1位。</p>
+<p>阶码用移码表示，在单精度浮点数(float)中占8位，在双精度浮点数(double)中占11位。</p>
+<p>阶码在全0或全1有特殊含义，所以阶码能表示的数值范围在<span
+class="math inline">\(2^n \-2\)</span>。</p>
+<p>尾数使用补码表示，</p>
 
                 
               </div>
@@ -326,8 +321,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>scala基础</div>
-      <div>http://example.com/2023/09/22/scala基础/</div>
+      <div>浮点数</div>
+      <div>http://example.com/2023/09/22/浮点数/</div>
     </div>
     <div class="license-meta">
       
@@ -371,9 +366,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/22/%E6%B5%AE%E7%82%B9%E6%95%B0/" title="浮点数">
+                      <a href="/2023/09/23/Spark%E5%AE%89%E8%A3%85/" title="Spark安装">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浮点数</span>
+                        <span class="hidden-mobile">Spark安装</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -381,8 +376,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/21/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9B%BE%E6%A0%87%E7%9A%84%E5%90%84%E9%A1%B5%E9%9D%A2/" title="修改博客主题并添加导航栏图标的各页面">
-                        <span class="hidden-mobile">修改博客主题并添加导航栏图标的各页面</span>
+                      <a href="/2023/09/22/scala%E5%9F%BA%E7%A1%80/" title="scala基础">
+                        <span class="hidden-mobile">scala基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -439,6 +434,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -632,6 +633,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
