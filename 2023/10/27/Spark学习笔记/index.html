@@ -16,21 +16,21 @@
   <meta name="author" content="hidoliboqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Spark安装 环境准备  Linux（CentOS7） Hadoop（3.1.3） JDK（1.8）  1.下载Spark安装包 访问Spark官网下载Spark安装文件（笔者这里选择的是2.7版本），将其放到&#x2F;opt&#x2F;software目录下。 下载玩安装文件后，需要对文件进行解压，执行命令 1$ tar -zxvf spark-2.4.8-bin-hadoop2.7.tgz">
+    <meta name="description" content="Spark学习 RDD 概念 定义：“Resilient Distributed Dataset ”-弹性分布式数据集 RDD只是一个逻辑概念 RDD是Spark的基本抽象。它代表了一组元素： - 不可变的(只读的) - 弹性的(容错) - 分布式的(数据集扩展到多个节点) •根据Spark官方描述，RDD由以下五部分组成： • 一组partition • 每个partiti">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spark安装">
-<meta property="og:url" content="http://example.com/2023/09/23/Spark%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="pyspark">
+<meta property="og:url" content="http://example.com/2023/10/27/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="hidoliboqi的博客">
-<meta property="og:description" content="Spark安装 环境准备  Linux（CentOS7） Hadoop（3.1.3） JDK（1.8）  1.下载Spark安装包 访问Spark官网下载Spark安装文件（笔者这里选择的是2.7版本），将其放到&#x2F;opt&#x2F;software目录下。 下载玩安装文件后，需要对文件进行解压，执行命令 1$ tar -zxvf spark-2.4.8-bin-hadoop2.7.tgz">
+<meta property="og:description" content="Spark学习 RDD 概念 定义：“Resilient Distributed Dataset ”-弹性分布式数据集 RDD只是一个逻辑概念 RDD是Spark的基本抽象。它代表了一组元素： - 不可变的(只读的) - 弹性的(容错) - 分布式的(数据集扩展到多个节点) •根据Spark官方描述，RDD由以下五部分组成： • 一组partition • 每个partiti">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-23T02:02:44.000Z">
-<meta property="article:modified_time" content="2023-09-23T02:42:42.089Z">
+<meta property="article:published_time" content="2023-10-27T08:54:32.000Z">
+<meta property="article:modified_time" content="2023-10-27T10:07:50.335Z">
 <meta property="article:author" content="hidoliboqi">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Spark安装 - hidoliboqi的博客</title>
+  <title>pyspark - hidoliboqi的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Spark安装"></span>
+            <span id="subtitle" data-typed-text="pyspark"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-23 10:02" pubdate>
-          2023年9月23日 上午
+        <time datetime="2023-10-27 16:54" pubdate>
+          2023年10月27日 下午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          903 字
+          1.2k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          8 分钟
+          11 分钟
         
       </span>
     
@@ -267,42 +267,112 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Spark安装</h1>
+            <h1 id="seo-header">pyspark</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="spark安装">Spark安装</h1>
-<h2 id="环境准备">环境准备</h2>
-<ul>
-<li><p>Linux（CentOS7）</p></li>
-<li><p>Hadoop（3.1.3）</p></li>
-<li><p>JDK（1.8）</p></li>
-</ul>
-<h2 id="下载spark安装包">1.下载Spark安装包</h2>
-<p>访问Spark官网下载Spark安装文件（笔者这里选择的是2.7版本），将其放到<code>/opt/software</code>目录下。</p>
-<p>下载玩安装文件后，需要对文件进行解压，执行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tar -zxvf spark-2.4.8-bin-hadoop2.7.tgz -C /opt/module<br></code></pre></td></tr></table></figure>
-<p>将其解压到<code>/opt/module/</code>目录下。</p>
-<p>修改spark目录名称。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /opt/module<br>$ <span class="hljs-built_in">mv</span> spark-2.4.8-bin-hadoop2.7/ ./spark-2.4.8<br></code></pre></td></tr></table></figure>
-<h2 id="配置相关文件">2.配置相关文件</h2>
-<p>安装文件解压缩后，还需修改Spark的配置文件spark-env.sh。首先复制一份Spark安装文件自带的配置文件模板以修改。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> spark-2.4.8/<br>$ <span class="hljs-built_in">cp</span> ./conf/spark-env.sh.template ./conf/spark-env.sh<br></code></pre></td></tr></table></figure>
-<p>然后使用vim编辑器打开spark-env.sh文件进行编辑，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ vim ./conf/spark-env.sh<br></code></pre></td></tr></table></figure>
-<p>在文件第一行添加配置信息</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> SPARK_DIST_CLASSPATH=$(/opt/module/hadoop-3.1.3/bin/hadoop classpath) <br><span class="hljs-comment">#括号里是/hadoop安装目录/bin/hadoop空格后直接输classpath</span><br></code></pre></td></tr></table></figure>
-<p>添加后保存，这样Spark就可以把数据存储到Hadoop分布式文件系统HDFS中，也可以从HDFS中读取数据。</p>
-<h2
-id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否安装成功</h2>
-<p>进入到Spark目录下，执行实例SparkPi</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /opt/module/spark-2.4.8/<br>$ bin/run-example SparkPi<br></code></pre></td></tr></table></figure>
-<p>执行命令会输出很多屏幕信息，不容易找到输出结果，通过<code>grep</code>命令过滤,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ bin/run-example SparkPi  2&gt;&amp;1 |grep <span class="hljs-string">&quot;Pi is roughly&quot;</span><br></code></pre></td></tr></table></figure>
-<p>过滤后得到</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Pi is roughly 3.1533357666788335<br></code></pre></td></tr></table></figure>
-<p>可以得到<span class="math inline">\(\pi\)</span>的近似值。</p>
+                <h1 id="spark学习">Spark学习</h1>
+<h2 id="rdd">RDD</h2>
+<h3 id="概念">概念</h3>
+<p>定义：“Resilient Distributed Dataset ”-弹性分布式数据集</p>
+<p>RDD只是一个逻辑概念</p>
+<p>RDD是Spark的基本抽象。它代表了一组元素：</p>
+<p>- 不可变的(只读的)</p>
+<p>- 弹性的(容错)</p>
+<p>- 分布式的(数据集扩展到多个节点)</p>
+<p>•根据Spark官方描述，RDD由以下五部分组成：</p>
+<p>• 一组partition</p>
+<p>• 每个partition的计算函数</p>
+<p>• 所依赖的RDD列表(即父RDD列表)</p>
+<p>•
+(可选的)对于key-value类型的RDD(每个元素是key-value对)，则包含一个Partitioner</p>
+<p>•默认是HashPartitioner</p>
+<p>•
+(可选的)计算每个partition所倾向的节点位置(比如HDFS文件的存放位置)</p>
+<h3 id="rdd创建">RDD创建</h3>
+<h4 id="从文件系统中加载创建rdd">1.从文件系统中加载创建RDD</h4>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> rdd1 = sc.<span class="hljs-type">TextFile</span>(file)		## <span class="hljs-type">HadoopFile</span>、<span class="hljs-type">SequenceFile</span>()<br></code></pre></td></tr></table></figure>
+<h4 id="基于内存集合创建rdd">2.基于内存集合创建RDD</h4>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> rdd1 = sc.parallelize(list)		##makeRDD()<br></code></pre></td></tr></table></figure>
+<h3 id="rdd操作">RDD操作</h3>
+<h4 id="transformations">transformations</h4>
+<p>transformations是操作RDD并返回一个新的RDD</p>
+<p>transformation转换得到的RDD是惰性求值的，也就是说，整个转换过程只是记录了转换的轨迹，并不会发生真正的计算，只有遇到行动操作时，才会发生真正的计算，开始从血缘关系源头开始，进行物理的转换操作</p>
+<table>
+
+<thead>
+<tr class="header">
+<th><strong>Transformation</strong>操作</th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filter(func)</td>
+<td>筛选出满足函数func的元素，并返回一个新的数据集</td>
+</tr>
+<tr class="even">
+<td>map(func)</td>
+<td>将每个元素传递到函数func中，并将结果返回为一个新的数据集</td>
+</tr>
+<tr class="odd">
+<td>flatMap(func)</td>
+<td>与map()相似，但每个输入元素都可以映射到0或多个输出结果</td>
+</tr>
+<tr class="even">
+<td>groupByKey()</td>
+<td>应用于(K,V)键值对的数据集时，返回一个新的(K,
+Iterable)形式的数据集</td>
+</tr>
+<tr class="odd">
+<td>reduceByKey(func)</td>
+<td>应用于(K,V)键值对的数据集时，返回一个新的(K,
+V)形式的数据集，其中的每个值是将每个key传递到函数func中进行聚合</td>
+</tr>
+</tbody>
+</table>
+<h4 id="actions">actions</h4>
+<p>actions是返回一个结果给驱动程序或将结果写入存储的操作，并开始一个计算</p>
+<p>注: transformations
+RDD是延迟计算的，只在action时才进行计算。许多转换是作用于元素范围内的，也就是一次作用于一个元素</p>
+<table>
+
+<thead>
+<tr class="header">
+<th><strong>Action</strong>操作</th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>count()</td>
+<td>返回数据集中的元素个数</td>
+</tr>
+<tr class="even">
+<td>collect()</td>
+<td>以数组的形式返回数据集中的所有元素</td>
+</tr>
+<tr class="odd">
+<td>first()</td>
+<td>返回数据集中的第一个元素</td>
+</tr>
+<tr class="even">
+<td>take(n)</td>
+<td>以数组的形式返回数据集中的前n个元素</td>
+</tr>
+<tr class="odd">
+<td>reduce(func)</td>
+<td>通过函数func(输入两个参数并返回一个值)聚合数据集中的元素</td>
+</tr>
+<tr class="even">
+<td>foreach(func)</td>
+<td>将数据集中的每个元素传递到函数func中运行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用key-value对rdd">使用Key-Value对RDD</h3>
+<p>Pair RDDs让我们能够在key上并行操作，或者跨网络重新组织数据</p>
 
                 
               </div>
@@ -310,27 +380,6 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -341,8 +390,8 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Spark安装</div>
-      <div>http://example.com/2023/09/23/Spark安装/</div>
+      <div>pyspark</div>
+      <div>http://example.com/2023/10/27/Spark学习笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -354,7 +403,7 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月23日</div>
+          <div>2023年10月27日</div>
         </div>
       
       
@@ -386,9 +435,9 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/27/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="pyspark">
+                      <a href="/2023/11/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="机器学习-神经网络">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pyspark</span>
+                        <span class="hidden-mobile">机器学习-神经网络</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -396,8 +445,8 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/22/%E6%B5%AE%E7%82%B9%E6%95%B0/" title="浮点数">
-                        <span class="hidden-mobile">浮点数</span>
+                      <a href="/2023/09/23/Spark%E5%AE%89%E8%A3%85/" title="Spark安装">
+                        <span class="hidden-mobile">Spark安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -454,12 +503,6 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -653,49 +696,6 @@ id="通过实例验证spark是否安装成功">3.通过实例验证Spark是否�
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>机器学习-支持向量机</title>
+    <link href="/2023/11/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"/>
+    <url>/2023/11/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习支持向量机">机器学习|支持向量机</h1><h2 id="原理">原理</h2><p>支持向量机(Support Vector Machine)是一种二分类模型，基本模型定义为<strong>特征空间最大间隔的线性分类器</strong>。</p><p>本质是将分类问题转化为凸线性规划求解问题，学习目标是间隔最大化，在基于训练集D在样本空间中找到一个划分超平面，使得数据集中的样本点距离该平面最远。且该划分超平面对样本空间局部扰动的容忍性最高。</p><p>划分超平面可通过线性方程 <span class="math inline">\(\omega^Tx + b =0\)</span>，其中<spanclass="math inline">\(\omega\)</span>为<strong>法向量</strong>，决定了超平面的方向，<spanclass="math inline">\(b\)</span>为偏移量，决定了样本点到超平面的距离。划分超平面可由法向量和偏移量确定。我们用$ ({},b) $ 表示划分超平面。样本空间点到超平面的距离$r = $</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>机器学习-神经网络</title>
+    <link href="/2023/11/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <url>/2023/11/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习神经网络">机器学习|神经网络</h1><h2 id="简要概括">简要概括</h2><p>神经网络(neural network)</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>pyspark</title>
+    <link href="/2023/10/27/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2023/10/27/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="spark学习">Spark学习</h1><h2 id="rdd">RDD</h2><h3 id="概念">概念</h3><p>定义：“Resilient Distributed Dataset ”-弹性分布式数据集</p><p>RDD只是一个逻辑概念</p><p>RDD是Spark的基本抽象。它代表了一组元素：</p><p>- 不可变的(只读的)</p><p>- 弹性的(容错)</p><p>- 分布式的(数据集扩展到多个节点)</p><p>•根据Spark官方描述，RDD由以下五部分组成：</p><p>• 一组partition</p><p>• 每个partition的计算函数</p><p>• 所依赖的RDD列表(即父RDD列表)</p><p>•(可选的)对于key-value类型的RDD(每个元素是key-value对)，则包含一个Partitioner</p><p>•默认是HashPartitioner</p><p>•(可选的)计算每个partition所倾向的节点位置(比如HDFS文件的存放位置)</p><h3 id="rdd创建">RDD创建</h3><h4 id="从文件系统中加载创建rdd">1.从文件系统中加载创建RDD</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> rdd1 = sc.<span class="hljs-type">TextFile</span>(file)## <span class="hljs-type">HadoopFile</span>、<span class="hljs-type">SequenceFile</span>()<br></code></pre></td></tr></table></figure><h4 id="基于内存集合创建rdd">2.基于内存集合创建RDD</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> rdd1 = sc.parallelize(list)##makeRDD()<br></code></pre></td></tr></table></figure><h3 id="rdd操作">RDD操作</h3><h4 id="transformations">transformations</h4><p>transformations是操作RDD并返回一个新的RDD</p><p>transformation转换得到的RDD是惰性求值的，也就是说，整个转换过程只是记录了转换的轨迹，并不会发生真正的计算，只有遇到行动操作时，才会发生真正的计算，开始从血缘关系源头开始，进行物理的转换操作</p><table><thead><tr class="header"><th><strong>Transformation</strong>操作</th><th><strong>含义</strong></th></tr></thead><tbody><tr class="odd"><td>filter(func)</td><td>筛选出满足函数func的元素，并返回一个新的数据集</td></tr><tr class="even"><td>map(func)</td><td>将每个元素传递到函数func中，并将结果返回为一个新的数据集</td></tr><tr class="odd"><td>flatMap(func)</td><td>与map()相似，但每个输入元素都可以映射到0或多个输出结果</td></tr><tr class="even"><td>groupByKey()</td><td>应用于(K,V)键值对的数据集时，返回一个新的(K,Iterable)形式的数据集</td></tr><tr class="odd"><td>reduceByKey(func)</td><td>应用于(K,V)键值对的数据集时，返回一个新的(K,V)形式的数据集，其中的每个值是将每个key传递到函数func中进行聚合</td></tr></tbody></table><h4 id="actions">actions</h4><p>actions是返回一个结果给驱动程序或将结果写入存储的操作，并开始一个计算</p><p>注: transformationsRDD是延迟计算的，只在action时才进行计算。许多转换是作用于元素范围内的，也就是一次作用于一个元素</p><table><thead><tr class="header"><th><strong>Action</strong>操作</th><th><strong>含义</strong></th></tr></thead><tbody><tr class="odd"><td>count()</td><td>返回数据集中的元素个数</td></tr><tr class="even"><td>collect()</td><td>以数组的形式返回数据集中的所有元素</td></tr><tr class="odd"><td>first()</td><td>返回数据集中的第一个元素</td></tr><tr class="even"><td>take(n)</td><td>以数组的形式返回数据集中的前n个元素</td></tr><tr class="odd"><td>reduce(func)</td><td>通过函数func(输入两个参数并返回一个值)聚合数据集中的元素</td></tr><tr class="even"><td>foreach(func)</td><td>将数据集中的每个元素传递到函数func中运行</td></tr></tbody></table><h3 id="使用key-value对rdd">使用Key-Value对RDD</h3><p>Pair RDDs让我们能够在key上并行操作，或者跨网络重新组织数据</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Spark安装</title>
     <link href="/2023/09/23/Spark%E5%AE%89%E8%A3%85/"/>
     <url>/2023/09/23/Spark%E5%AE%89%E8%A3%85/</url>
